@@ -14,7 +14,7 @@ class Carte{
 			switch ($id){
                 case "carte_id" : $this->setIdCarte($valeurs);
                 break;
-                case "carte_valeur" : $this->setIdCarte($valeurs);
+                case "carte_valeur" : $this->setValeurCarte($valeurs);
                 break;
 			}
 		}
@@ -25,9 +25,17 @@ class Carte{
         $this->idCarte = $idCarte;
     }
 
+    public function setValeurCarte($valeur){
+        $this->valeurCarte=$valeur
+    }
     //**********************************GETTERS**************************
     public function getIdCarte(){
         return $this->idCarte;
     }
+
+    public function getValeurCarte(){
+        return $this->valeurCarte;
+    }
+
 }
 ?>
