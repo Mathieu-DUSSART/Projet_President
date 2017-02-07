@@ -4,7 +4,6 @@ class Joueur {
 
 	private $id;
 	private $pseudo;
-<<<<<<< HEAD
 	private $password;
 	
 =======
@@ -24,12 +23,8 @@ class Joueur {
 				break;
 				case "pseudo": $this->setPseudo($valeurs);
 				break;
-<<<<<<< HEAD
 				case "main": $this ->setPassword($valeur);	
 				break;
-=======
-				case "main": $this ->setMain($valeur);
->>>>>>> 629adcdf9de337a77520b06151185ed6ec0d0366
 			}
 		}
 	}
@@ -41,14 +36,9 @@ class Joueur {
 	public function getPseudo(){
 		return $this->pseudo;
 	}
-<<<<<<< HEAD
 	
 	public function getPassword(){
-=======
-
-	public function getMain(){
->>>>>>> 629adcdf9de337a77520b06151185ed6ec0d0366
-		return $this->main;
+		return $this->password;
 	}
 
 	//**********************************SETTERS**************************
@@ -59,14 +49,9 @@ class Joueur {
 	public function setPseudo($pseudo){
         $this->pseudo = $pseudo;
     }
-<<<<<<< HEAD
 	
-	public function setPassword($main){
-=======
-
-	public function setMain($main){
->>>>>>> 629adcdf9de337a77520b06151185ed6ec0d0366
-        $this->main = $main;
-    }
+	public function setPassword($password){
+		$this->password = $password;
+	}
 
 }
