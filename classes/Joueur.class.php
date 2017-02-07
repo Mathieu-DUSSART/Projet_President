@@ -4,7 +4,7 @@ class Joueur {
 	
 	private $id;
 	private $pseudo;
-	private $main;
+	private $password;
 	
 	public function __construct($valeurs = array()){
         if(!empty($valeurs)){
@@ -19,7 +19,8 @@ class Joueur {
 				break;
 				case "pseudo": $this->setPseudo($valeurs);
 				break;
-				case "main": $this ->setMain($valeur);	
+				case "main": $this ->setPassword($valeur);	
+				break;
 			}
 		}
 	}
@@ -32,7 +33,7 @@ class Joueur {
 		return $this->pseudo;
 	}
 	
-	public function getMain(){
+	public function getPassword(){
 		return $this->main;
 	}
 	
@@ -45,7 +46,7 @@ class Joueur {
         $this->pseudo = $pseudo;
     }
 	
-	public function setMain($main){
+	public function setPassword($main){
         $this->main = $main;
     }
 	
