@@ -2,6 +2,7 @@
 class Carte{
     private $idCarte;
     private $valeurCarte;
+    private $imgCarte;
 
     public function __construct($valeurs = array()){
         if(!empty($valeurs)){
@@ -16,6 +17,8 @@ class Carte{
                 break;
                 case "carte_valeur" : $this->setValeurCarte($valeurs);
                 break;
+                case "carte_img" : $this->setImgCarte($valeurs);
+                break;
 			}
 		}
 	}
@@ -28,6 +31,10 @@ class Carte{
     public function setValeurCarte($valeur){
         $this->valeurCarte=$valeur
     }
+
+    public function setImgCarte($valeur){
+        $this->imgCarte=$valeur
+    }
     //**********************************GETTERS**************************
     public function getIdCarte(){
         return $this->idCarte;
@@ -36,6 +43,11 @@ class Carte{
     public function getValeurCarte(){
         return $this->valeurCarte;
     }
+
+    public function getImgCarte(){
+        return $this->imgCarte;
+    }
+
 
 }
 ?>
