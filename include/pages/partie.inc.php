@@ -1,9 +1,8 @@
 <?php
-	$db = new MyPdo();
-	$partieManager = new PartieManager($db);
+	$partieManager = new PartieManager($pdo);
 ?>
 
-<button type="button"> nouvelle partie </button>
+<input type="button" id="BoutonNouvellePartie" value="nouvelle partie">  
 
 <table>
 	<tr> 
@@ -15,7 +14,7 @@
 		foreach($parties as $partie){
 			?>
 			<tr>
-			<td><?php echo $partie ?></td><td><button type="button"> rejoindre partie </button></td>
+			<td><?php echo $partie ?></td><td><input type="BoutonRejoindrePartie" value="rejoindre partie"></td>
 			</tr>
 		
 	<?php

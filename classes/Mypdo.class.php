@@ -1,5 +1,5 @@
 <?php
-class Mypdo extends PDO
+class MyPDO extends PDO
 {
 
 	protected $dbo;
