@@ -4,18 +4,24 @@
 <!doctype html>
 <html lang="fr">
 
-<head>
+    <head>
 
-  <meta charset="utf-8">
+      <meta charset="utf-8">
 
-<?php
-		$title = "";?>
-		<title>
-		<?php echo $title ?>
-		</title>
+    <?php
+    	$title = "Président";?>
+    	<title>
+    	<?php echo $title ?>
+    	</title>
 
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-</head>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+        <!-- Import JQuery-->
+        <script src="/Projet_President/js/jquery-3.1.1.min.js"></script>
+
+        <!-- Import JQueryUI-->
+        <script src="/Projet_President/js/JQueryUI/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="/Projet_President/js/JQueryUI/jquery-ui.min.css">
+    </head>
 	<body>
         <header>
 
