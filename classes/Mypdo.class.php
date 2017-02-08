@@ -14,14 +14,6 @@ class Mypdo extends PDO
 		{
 			$bool=false;
 		}
-		try {
-			$this->dbo =parent::__construct("mysql:host=".DBHOST."; dbname=".DBNAME."; charset=UTF8", DBUSER, DBPASSWD,
-			array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => $bool, PDO::ERRMODE_EXCEPTION => $bool));
-
-		}
-		catch (PDOException $e) {
-			echo '?chec lors de la connexion : ' . $e->getMessage();
-		}
 	}
 
 
