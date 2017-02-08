@@ -40,6 +40,7 @@
                         // Le membre n'a pas été connecté. (data vaut ici "failed")
                         $("#resultat").html("<p>Erreur lors de la connexion...</p>");
                     }
+                    alert(data);
                 },
                 'text'
             );
