@@ -14,13 +14,13 @@
     $(function(){
         var monBouton = $('#submit').on('click',function(){
             $.ajax({
-                url:'connexion.php',
+                url:'validationConnexion.php',
                 data: $('[name="login"]').val(),
                 success: function(data){
                     alert('gg wp my friend')
                 },
                 error: alert('fail')
             })
-        })
+        });
     }
 </script>
