@@ -1,6 +1,6 @@
 <?php
 define('DBHOST', "localhost");
-define('DBNAME', "kelyan");
+define('DBNAME', "president");
 define('DBUSER', "root");
 define('DBPASSWD', "");
 define('ENV','dev');
