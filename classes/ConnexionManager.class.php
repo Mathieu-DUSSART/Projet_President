@@ -1,6 +1,6 @@
 <?php 
 
-class ArticleManager{
+class ConnexionManager{
 	private $db;
 
 	public function __construct($db){
