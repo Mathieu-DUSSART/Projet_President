@@ -7,13 +7,10 @@ else{
 
 switch ($pageNum) {
     case 1:
-        include_once('pages/connexion.inc.php');
+        include_once('/index.php');
         break;
-    case 2:
-        include_once('pages/partie.inc.php');
-        break;
-        
-    default : include_once('pages/connexion.inc.php');
+
+    default : include_once('/index.php');
 }
 
 

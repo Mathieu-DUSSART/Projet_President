@@ -1,3 +1,8 @@
-h1{
-    text-align:center;
+.tableauPartie{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.tableauPartie *{
+    border-collapse: collapse;
+    border: 1px solid black;
 }
