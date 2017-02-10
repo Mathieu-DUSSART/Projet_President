@@ -16,13 +16,13 @@ class PartieManager{
 		}
 		return $tabPartie;
 	}
-	
+
 	public function getNbJoueurPartie(partie_id){
 		$sql="SELECT count(joueur_id) as nbJoueur FROM joueurpartie where partie_id =:partie_id ";
 		$req=$this->db->prepare($sql);
         $req->bindValue(':partie_id', partie_id, PDO::PARAM_INT);
         $req->execute();
-		$res=$req->fetch(PDO::FETCH_OBJ)
+		$res=$req->fetch(PDO::FETCH_OBJ);
 		return $res;
 	}
 }
