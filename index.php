@@ -5,7 +5,8 @@
     require_once("include/autoLoad.inc.php");
     require_once("include/function.inc.php");
     require_once("include/router.inc.php");
-    
+    $pdo=new Mypdo();
+
 
 
     require_once("include/footer.inc.php");
