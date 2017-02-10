@@ -1,5 +1,5 @@
 <?php
-class ArticleManager{
+class PartieManager{
 	private $db;
 
 	public function __construct($db){
@@ -17,4 +17,4 @@ class ArticleManager{
 		return $tabPartie;
 	}
 }
-?> 
+?>
