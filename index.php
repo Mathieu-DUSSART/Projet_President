@@ -55,7 +55,7 @@
                                 // Le membre n'a pas été connecté. (data vaut ici "failed")
                                 $("#resultat").html("<p>Erreur lors de la connexion...</p>");
                             }
-                            estConnecte();
+
                         }
                     );
                 });
@@ -81,51 +81,46 @@
 
         <div id="corps">
             <!--Formulaire de connexion-->
+            <div class="divConnexion">
+                <h1>Se connecter</h1>
 
-                <div class="divConnexion">
-                    <h1>Se connecter</h1>
+                <form id="formConnexion" method="POST" action="#" autocomplete="off">
+                    <label>Login :</label>
+                    <input type="text" name="login" required>
+                    <br>
+                    <label>Mot de passe :</label>
+                    <input type="password" name="password" required>
+                    <br>
+                    <input class="bouton" type='button' id="submitConnexion" value='Connexion'>
+                </form>
 
-                    <form id="formConnexion" method="POST" action="#" autocomplete="off">
-                        <label>Login :</label>
-                        <input type="text" name="login" required>
-                        <br>
-                        <label>Mot de passe :</label>
-                        <input type="password" name="password" required>
-                        <br>
-                        <input class="bouton" type='button' id="submitConnexion" value='Connexion'>
-                    </form>
-
-                    <div id="resultat">
-                        <!-- Nous allons afficher un retour en jQuery au visiteur -->
-                    </div>
+                <div id="resultat">
+                    <!-- Nous allons afficher un retour en jQuery au visiteur -->
                 </div>
-            <?php
+            </div>
 
-            ?>
-                <!--Affichage des parties-->
-                <div class="divPartie">
-                    <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
-                    <table class="tableauPartie">
-                    	<tr>
-                    		<th>Partie en cours </th>
-                    	</tr>
+            <!--Affichage des parties-->
+            <div class="divPartie">
+                <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
+                <table class="tableauPartie">
+                	<tr>
+                		<th>Partie en cours </th>
+                	</tr>
 
-                    	<tr>
-                    		<td>Test1</td>
-                    		<td>test2</td>
-                    	</tr>
-                        <tr>
-                    		<td>Test1</td>
-                    		<td>test2</td>
-                    	</tr>
-                        <tr>
-                    		<td>Test1</td>
-                    		<td>test2</td>
-                    	</tr>
-                    </table>
-                </div>
-
-
+                	<tr>
+                		<td>Test1</td>
+                		<td>test2</td>
+                	</tr>
+                    <tr>
+                		<td>Test1</td>
+                		<td>test2</td>
+                	</tr>
+                    <tr>
+                		<td>Test1</td>
+                		<td>test2</td>
+                	</tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
