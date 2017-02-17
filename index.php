@@ -78,14 +78,28 @@
 							console.log(data);
 
 							$.each(data,function(index, value){
-								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+'</td><td><input class="bouton" type="button" id="submitPartie" value="Rejoindre"></td></tr>');
+								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+'</td><td><input class="bouton boutonRejoindrePartie" type="button" id="submitPartie" value="Rejoindre"></td></tr>');
 								console.log(index +":"+value);
 							});
-
-
-
                         }
                 });
+
+                //Click sur le bouton rejoindre partie
+                var boutonRejoindrePartie = $('.boutonRejoindrePartie').on('click',function(){
+                    //Requete AJAX qui vérifie que le login et password sont correct
+                    $.ajax({
+                        url: 'rejoindrePartie.php',
+                        success: function(data){
+                            estConnecte();
+                            if(data == 'Success'){
+                                alert("coucou");
+                            }else{
+                                alert("coucou2");
+                            }
+                        }
+                    });
+                });
+
             });
             $(window).on("load resize ", function() {
                 var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
@@ -141,6 +155,11 @@
                         </table>
                     </div>
                 </section>
+            </div>
+
+            <!--Plateau de jeu-->
+            <div class="divPlateau">
+
             </div>
         </div>
     </body>
