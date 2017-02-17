@@ -15,8 +15,32 @@
         <link rel="stylesheet" href="/Projet_President/js/JQueryUI/jquery-ui.min.css">
 
         <script>
+            //Fonction qui vérifie si l'utilisateur est connecté ou non
+            function estConnecte(){
+                $.ajax({
+                    url: 'estConnecte.php',
+                    success: function(data){
+                        if(!data){
+                            $(".divConnexion").show();
+                            $(".divPartie").hide();
+                        }else{
+                            $(".divConnexion").hide();
+                            $(".divPartie").show();
+                        }
+                    }
+                });
+            }
+
             $(function(){
+                $.ajax({
+                    url: 'include/pages/include.inc.php'
+                });
+
+                estConnecte();
+
+                //Click sur le bouton connexion
                 var boutonConnexion = $('#submitConnexion').on('click',function(){
+                    //Requete AJAX qui vérifie que le login et password sont correct
                     $.post(
                         'validationConnexion.php',
                         {
@@ -27,26 +51,21 @@
                             if(data == 'Success'){
                                 // Le membre est connecté. Ajoutons lui un message dans la page HTML.
                                 $("#resultat").html("<p>Vous avez été connecté avec succès !</p>");
-                                $(".divConnexion").hide();
-                                $(".divPartie").toggle();
-
                             }else{
                                 // Le membre n'a pas été connecté. (data vaut ici "failed")
                                 $("#resultat").html("<p>Erreur lors de la connexion...</p>");
                             }
-                        },
-                        'text'
+                            estConnecte();
+                        }
                     );
                 });
-                $.ajax({
-                    url: 'include/pages/include.inc.php'
-                });
 
+                //Click sur le bouton déconnexion
                 var boutonDeconnexion = $('#submitDeconnexion').on('click',function(){
                     $.ajax({
                         url: 'include/pages/deconnexion.inc.php',
                         success: function(data){
-                            alert(data);
+                            estConnecte();
                         }
                     });
                 });
@@ -62,17 +81,16 @@
 
         <div id="corps">
             <!--Formulaire de connexion-->
-            <?php
-            if(!isset($_SESSION["login"])){?>
+
                 <div class="divConnexion">
                     <h1>Se connecter</h1>
 
                     <form id="formConnexion" method="POST" action="#" autocomplete="off">
                         <label>Login :</label>
-                        <input class="champ" type="text" name="login" required>
+                        <input type="text" name="login" required>
                         <br>
                         <label>Mot de passe :</label>
-                        <input class="champ" type="password" name="password" required>
+                        <input type="password" name="password" required>
                         <br>
                         <input class="bouton" type='button' id="submitConnexion" value='Connexion'>
                     </form>
@@ -82,7 +100,7 @@
                     </div>
                 </div>
             <?php
-            }else{
+
             ?>
                 <!--Affichage des parties-->
                 <div class="divPartie">
@@ -106,8 +124,7 @@
                     	</tr>
                     </table>
                 </div>
-            <?php
-            } ?>
+
 
         </div>
     </body>
