@@ -42,7 +42,7 @@ h1{
     position : relative;
 }
 
-.champ{
+input{
     background-color:#E0E0E0;
     margin:0px 5px 5px 5px;
     padding:5px;

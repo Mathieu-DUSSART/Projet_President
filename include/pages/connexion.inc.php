@@ -2,7 +2,7 @@
 
 <form id="formConnexion" method="POST" action="#" autocomplete="off">
     <label>Login :</label>
-    <input class = "champ" type="text" name="login" required>
+    <input class="champ" type="text" name="login" required>
     <br>
     <label>Mot de passe :</label>
     <input class="champ" type="password" name="password" required>
