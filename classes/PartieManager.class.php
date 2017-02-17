@@ -22,8 +22,8 @@ class PartieManager{
 		$req=$this->db->prepare($sql);
         $req->bindValue(':partie_id', $partie_id, PDO::PARAM_INT);
         $req->execute();
-		$res=$req->fetch(PDO::FETCH_NUM);
-		return $res;
+		$res=$req->fetch(PDO::FETCH_OBJ);
+		return $res->nbJoueur;
 	}
 }
 ?>
