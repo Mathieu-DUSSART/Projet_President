@@ -1,6 +1,6 @@
 <?php 
 
-class Main {
+class Partie {
 	
 	private $idPartie;
 	private $nomSalon;
@@ -14,9 +14,9 @@ class Main {
     public function affecte($tab = array()){
 		foreach($tab as $val => $valeurs){
 			switch ($val){
-				case "id" : $this->setIdPartie($valeurs);
+				case "partie_id" : $this->setIdPartie($valeurs);
 				break;
-				case "pseudo": $this->setNomSalon($valeurs);
+				case "partie_nom": $this->setNomSalon($valeurs);
 				break;
 			}
 		}
@@ -32,8 +32,8 @@ class Main {
 	}
 	
 	//**********************************SETTERS**************************
-    public function setIdJoueur($id){
-        $this->idJoueur = $idJoueur;
+    public function setIdPartie($idPartie){
+        $this->idPartie = $idPartie;
     }
 	
 	public function setNomSalon($nomSalon){

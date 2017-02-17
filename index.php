@@ -71,6 +71,21 @@
                     });
                 });
 
+				$.ajax({
+                        url: 'listePartie.php',
+						dataType: 'json',
+                        success: function(data){  
+							console.log(data);
+							
+							$.each(data,function(index, value){
+								$(".tableauPartie").append('<tr><td>'+index+'</td><td>'+value+'</td></tr>');
+								console.log(index +":"+value);
+							});
+								
+							
+							
+                        }
+                });
             });
         </script>
     </head>
@@ -108,18 +123,6 @@
                 		<th>Partie en cours </th>
                 	</tr>
 
-                	<tr>
-                		<td>Test1</td>
-                		<td>test2</td>
-                	</tr>
-                    <tr>
-                		<td>Test1</td>
-                		<td>test2</td>
-                	</tr>
-                    <tr>
-                		<td>Test1</td>
-                		<td>test2</td>
-                	</tr>
                 </table>
             </div>
         </div>
