@@ -1,5 +1,4 @@
 <?php session_start();
-$connecte = isset($_SESSION["login"]);
  ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,6 +29,7 @@ $connecte = isset($_SESSION["login"]);
                                 $("#resultat").html("<p>Vous avez été connecté avec succès !</p>");
                                 $(".divConnexion").hide();
                                 $(".divPartie").toggle();
+                                
                             }else{
                                 // Le membre n'a pas été connecté. (data vaut ici "failed")
                                 $("#resultat").html("<p>Erreur lors de la connexion...</p>");
