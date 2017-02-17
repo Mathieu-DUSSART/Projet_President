@@ -7,16 +7,13 @@ $pdo = new Mypdo();
 $managerPartie = new PartieManager($pdo);
 
 $listePartie = $managerPartie->getPartie();
-$jsonData1 = Array();
-$jsonData2 = Array();
+$jsonData = [];
+$i=0;
 foreach($listePartie as $partie){
-
-	$jsonData1[$partie->getIdPartie()] = $partie->getNomSalon();
-	$jsonData2[$partie->getNomSalon()] = $managerPartie->getNbJoueurPartie($partie->getIdPartie())[0];
+	$numPartie = $partie->getIdPartie();
+	$nomPartie = $partie->getNomSalon();
+	$jsonData[$i] = [$numPartie, $nomPartie, $managerPartie->getNbJoueurPartie($numPartie)];
+	$i++;
 }
-
-$jsonData = Array();
-$jsonData[] = $jsonData1;
-$jsonData[] = $jsonData2;
-echo json_encode($jsonData,JSON_FORCE_OBJECT);
+echo json_encode($jsonData, JSON_FORCE_OBJECT);
 ?>

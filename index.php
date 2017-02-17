@@ -74,15 +74,16 @@
 				$.ajax({
                         url: 'listePartie.php',
 						dataType: 'json',
-                        success: function(data,data2){  
+                        success: function(data){
 							console.log(data);
-							$.each(data[0],function(index, value){
-								$(".tableauPartie").append('<tr><td>'+index+'</td><td>'+value+'</td><td>'+data[1][value]+'</td></tr>');
+
+							$.each(data,function(index, value){
+								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+'</td></tr>');
 								console.log(index +":"+value);
 							});
-								
-							
-							
+
+
+
                         }
                 });
             });
