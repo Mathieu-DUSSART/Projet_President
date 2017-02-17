@@ -1,5 +1,6 @@
 <?php session_start();
  ?>
+<<<<<<< HEAD
 
 <!doctype html>
 <html lang="fr">
@@ -55,3 +56,5 @@
         <header>
 
         </header>
+=======
+>>>>>>> f17ae7b2157bf2f7a70794b79428a3d01805daff
