@@ -10,12 +10,12 @@ h1{
 }
 .tableauPartie{
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid lightslategrey;
     margin: 0 auto;
 }
 .tableauPartie *{
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid lightslategrey;
     padding: 5px;
     text-align: center;
 }
@@ -25,10 +25,14 @@ h1{
 
 
 #corps{
-    background-color:deeppink;
+    background-color:midnightblue;
     width:80%;
     height:100%;
     margin-left:10%;
+}
+
+table{
+    background-color: lightslategrey;
 }
 
 .bouton{
