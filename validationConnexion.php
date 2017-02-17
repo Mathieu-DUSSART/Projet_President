@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once("include/config.inc.php");
 require_once("include/autoLoad.inc.php");
 $pdo = new Mypdo();
@@ -9,6 +11,7 @@ if(isset($_POST['login']) && isset($_POST['password'])){
     $password = $_POST['password'];
 
     if($managerConnexion->checkLoginPassword($login, $password)){
+        $_SESSION["login"] = $login;
         echo "Success";
     }else{
         echo "Fail";
