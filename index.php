@@ -74,11 +74,10 @@
 				$.ajax({
                         url: 'listePartie.php',
 						dataType: 'json',
-                        success: function(data){  
+                        success: function(data,data2){  
 							console.log(data);
-							
-							$.each(data,function(index, value){
-								$(".tableauPartie").append('<tr><td>'+index+'</td><td>'+value+'</td></tr>');
+							$.each(data[0],function(index, value){
+								$(".tableauPartie").append('<tr><td>'+index+'</td><td>'+value+'</td><td>'+data[1][value]+'</td></tr>');
 								console.log(index +":"+value);
 							});
 								
