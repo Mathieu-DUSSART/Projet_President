@@ -87,6 +87,10 @@
                         }
                 });
             });
+            $(window).on("load resize ", function() {
+                var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+                $('.tbl-header').css({'padding-right':scrollWidth});
+            }).resize();
         </script>
     </head>
 
@@ -118,12 +122,25 @@
             <!--Affichage des parties-->
             <div class="divPartie">
                 <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
-                <table class="tableauPartie">
-                	<tr>
-                		<th>Partie en cours </th>
-                	</tr>
-
-                </table>
+                <section>
+                    <h1>Rejoindre une partie</h1>
+                    <div class="tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Nombre de joueur</th>
+                            <th>rejoindre</th>
+                            </tr>
+                        </thead>
+                        </table>
+                    </div>
+                    <div class="tbl-content">
+                        <table class="tableauPartie" cellpadding="0" cellspacing="0" border="0">
+                        </table>
+                    </div>
+                </section>
             </div>
         </div>
     </body>
