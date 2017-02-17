@@ -78,7 +78,7 @@
 							console.log(data);
 
 							$.each(data,function(index, value){
-								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+'</td></tr>');
+								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+'</td><td><input class="bouton" type="button" id="submitPartie" value="Rejoindre"></td></tr>');
 								console.log(index +":"+value);
 							});
 
