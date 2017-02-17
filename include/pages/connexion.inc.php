@@ -1,5 +1,4 @@
-<h1>Se connecter</h1>
-
+<h1>Bienvenue sur le jeu du président ! (ou du trouduc)</h1>
 <form id="formConnexion" method="POST" action="#" autocomplete="off">
     <label>Login :</label>
     <input class="champ" type="text" name="login" required>
