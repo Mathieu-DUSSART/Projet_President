@@ -22,7 +22,7 @@ h1{
 
 
 #corps{
-    background-color: limegreen;
+    background-color:deeppink;
     width:80%;
     height:100%;
     margin-left:10%;
@@ -58,11 +58,3 @@ input{
     font-weight:bold;
 }
 
-#choixInstru{
-  height:20%;
-  width: 100%;
-  position:absolute;
-  background:#FF5050;
-  box-shadow:5px 7px 0px 0px #662020;
-  transition:all ease .35s;
-}
