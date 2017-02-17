@@ -1,3 +1,13 @@
+
+body{
+    height: 100%;
+    width: 100%;
+    background-image: url('fond');
+    background-repeat: no-repeat;    
+}
+h1{
+    text-align:center;
+}
 .tableauPartie{
     border-collapse: collapse;
     border: 1px solid black;
@@ -5,4 +15,45 @@
 .tableauPartie *{
     border-collapse: collapse;
     border: 1px solid black;
+}
+#formConnexion{
+    text-align:center;
+}
+
+
+#corps{
+    background-color green;
+    width:80%;
+    height:100%;
+    margin-left:10%;
+}
+
+.bouton{
+    border:2px #AAAAAA solid;
+    background-color:#444444;
+    font-size:12pt;
+    font-weight:bold;
+    font-family:Verdana, Arial, sans-serif;
+    color:#FFFFFF;
+    width:125px;
+    height:40px;
+    border-radius:10px;
+    cursor:pointer;
+    position : relative;
+}
+
+.champ{
+    background-color:#E0E0E0;
+    margin:0px 5px 5px 5px;
+    padding:5px;
+    font-size:12pt;
+   min-height:25px;
+   border-radius:10px;
+   border:1px #222222 solid;
+    box-shadow:1px 1px 3px #000000 inset;
+}
+
+label{
+    font-size:12pt;
+    font-weight:bold;
 }

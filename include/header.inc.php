@@ -55,5 +55,3 @@
         <header>
 
         </header>
-
-        <div id="corps">
