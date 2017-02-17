@@ -33,7 +33,7 @@
 
             $(function(){
                 $.ajax({
-                    url: 'include/pages/include.inc.php'
+                    url: 'include/include.inc.php'
                 });
 
                 estConnecte();
@@ -48,6 +48,7 @@
                             password: $('[name="password"]').val()
                         },
                         function(data){
+                            estConnecte();
                             if(data == 'Success'){
                                 // Le membre est connecté. Ajoutons lui un message dans la page HTML.
                                 $("#resultat").html("<p>Vous avez été connecté avec succès !</p>");
@@ -63,7 +64,7 @@
                 //Click sur le bouton déconnexion
                 var boutonDeconnexion = $('#submitDeconnexion').on('click',function(){
                     $.ajax({
-                        url: 'include/pages/deconnexion.inc.php',
+                        url: 'deconnexion.php',
                         success: function(data){
                             estConnecte();
                         }
