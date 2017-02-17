@@ -3,7 +3,7 @@ body{
     height: 100%;
     width: 100%;
     background-image: url('fond');
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
 }
 h1{
     text-align:center;
@@ -11,10 +11,13 @@ h1{
 .tableauPartie{
     border-collapse: collapse;
     border: 1px solid black;
+    margin: 0 auto;
 }
 .tableauPartie *{
     border-collapse: collapse;
     border: 1px solid black;
+    padding: 5px;
+    text-align: center;
 }
 #formConnexion{
     text-align:center;
@@ -57,4 +60,3 @@ input{
     font-size:12pt;
     font-weight:bold;
 }
-
