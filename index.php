@@ -75,18 +75,17 @@
                         url: 'listePartie.php',
 						dataType: 'json',
                         success: function(data){
-							console.log(data);
-
 							$.each(data,function(index, value){
 								$(".tableauPartie").append('<tr><td>'+value[0]+'</td><td>'+value[1]+'</td><td>'+value[2]+' / 4</td><td><input class="bouton boutonRejoindrePartie" type="button" value="Rejoindre"></td></tr>');
-								console.log(index +":"+value);
 							});
                             //Click sur le bouton rejoindre partie
                             var boutonRejoindrePartie = $(".boutonRejoindrePartie").on("click", function(){
                                 console.log("test");
                                 //Requete AJAX qui permet de rejoindre une partie
+                                console.log($(this).parents("tr").children("td:first").text());
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
+                                    data: "id=" + $(this).parents("tr").children("td:first").text(),
                                     success: function(data){
                                         estConnecte();
                                         if(data == 'Success'){
@@ -99,7 +98,7 @@
                             });
                         }
                 });
-                
+
             });
             $(window).on("load resize ", function() {
                 var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
@@ -136,6 +135,7 @@
             <!--Affichage des parties-->
             <div class="divPartie">
                 <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
+                <span>Bienvenue <?php echo $_SESSION["login"]?></span>
                 <section>
                     <h1>Rejoindre une partie</h1>
                     <div class="tbl-header">

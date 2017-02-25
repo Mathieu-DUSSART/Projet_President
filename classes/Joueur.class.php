@@ -17,11 +17,11 @@ class Joueur {
     public function affecte($tab = array()){
 		foreach($tab as $val => $valeurs){
 			switch ($val){
-				case "id" : $this->setIdJoueur($valeurs);
+				case "joueur_id" : $this->setIdJoueur($valeurs);
 				break;
-				case "pseudo": $this->setPseudo($valeurs);
+				case "joueur_pseudo": $this->setPseudo($valeurs);
 				break;
-				case "main": $this ->setPassword($valeur);
+				case "joueur_password": $this ->setPassword($valeur);
 				break;
 			}
 		}

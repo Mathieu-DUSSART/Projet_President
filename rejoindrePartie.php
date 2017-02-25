@@ -1,3 +1,3 @@
 <?php
-echo "Success";
+echo "Success" + $_GET["id"];
 ?>

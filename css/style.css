@@ -25,7 +25,8 @@ h1{
 
 
 #corps{
-    background-color:midnightblue;
+    /*background-color:midnightblue;*/
+    background-color: #E5E5E5;
     width:80%;
     height:100%;
     margin-left:10%;
@@ -150,10 +151,10 @@ section{
 
 ::-webkit-scrollbar {
     width: 6px;
-} 
+}
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
