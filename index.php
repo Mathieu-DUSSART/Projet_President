@@ -71,6 +71,7 @@
                     });
                 });
 
+                //Requête AJAX qui récupère la liste des parties en cours
 				$.ajax({
                         url: 'listePartie.php',
 						dataType: 'json',
@@ -99,7 +100,9 @@
                         }
                 });
 
+
             });
+
             $(window).on("load resize ", function() {
                 var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
                 $('.tbl-header').css({'padding-right':scrollWidth});
@@ -135,7 +138,7 @@
             <!--Affichage des parties-->
             <div class="divPartie">
                 <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
-                <span>Bienvenue <?php echo $_SESSION["login"]?></span>
+                <span>Bienvenue </span>
                 <section>
                     <h1>Rejoindre une partie</h1>
                     <div class="tbl-header">
