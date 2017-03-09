@@ -45,11 +45,14 @@
 
                 $.ajax({
                     url: 'recupCarte.php',
+                    dataType: 'json',
                     success: function(data){
-                        alert(data);
+                        alert("oui");
+                        $.each(data,function(index, value){
+                            $(".divPlateau").append('<div><p>'+value[0]+' '+value[1]+' '+value[2]+'</p></div>');
+                        });
                     }
                 });
-
             }
 
 
@@ -121,7 +124,7 @@
                                 });
 
                                 rejoindrePartie();
-                                distributionCarte();
+                                distributionCarte(4);
                             });
                         }
                 });
