@@ -23,6 +23,7 @@
                         if(!data){
                             $(".divConnexion").show();
                             $(".divPartie").hide();
+                            $(".divPlateau").hide();
                         }else{
                             $(".divConnexion").hide();
                             $(".divPartie").show();
@@ -30,6 +31,28 @@
                     }
                 });
             }
+
+            function rejoindrePartie(){
+                var divPlateau = $(".divPlateau");
+                var divPartie = $(".divPartie");
+
+                divPartie.hide();
+                divPlateau.show();
+            }
+
+            function distributionCarte(nbJoueur){
+                var carteJoueur1 = [];
+
+                $.ajax({
+                    url: 'recupCarte.php',
+                    success: function(data){
+                        alert(data);
+                    }
+                });
+
+            }
+
+
 
             $(function(){
                 $.ajax({
@@ -81,21 +104,24 @@
 							});
                             //Click sur le bouton rejoindre partie
                             var boutonRejoindrePartie = $(".boutonRejoindrePartie").on("click", function(){
-                                console.log("test");
+
+
                                 //Requete AJAX qui permet de rejoindre une partie
-                                console.log($(this).parents("tr").children("td:first").text());
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
                                     data: "id=" + $(this).parents("tr").children("td:first").text(),
                                     success: function(data){
-                                        estConnecte();
+                                        //estConnecte();
                                         if(data == 'Success'){
                                             alert("coucou");
                                         }else{
-                                            alert("coucou2");
+                                            alert(data);
                                         }
                                     }
                                 });
+
+                                rejoindrePartie();
+                                distributionCarte();
                             });
                         }
                 });

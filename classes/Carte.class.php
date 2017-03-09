@@ -29,11 +29,11 @@ class Carte{
     }
 
     public function setValeurCarte($valeur){
-        $this->valeurCarte=$valeur
+        $this->valeurCarte=$valeur;
     }
 
     public function setImgCarte($valeur){
-        $this->imgCarte=$valeur
+        $this->imgCarte=$valeur;
     }
     //**********************************GETTERS**************************
     public function getIdCarte(){
