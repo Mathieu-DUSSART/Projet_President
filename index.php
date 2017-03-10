@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="/Projet_President/js/JQueryUI/jquery-ui.min.css">
 
         <script>
+            var login = "";
             //Fonction qui vérifie si l'utilisateur est connecté ou non
             function estConnecte(){
                 $.ajax({
@@ -25,6 +26,8 @@
                             $(".divPartie").hide();
                             $(".divPlateau").hide();
                         }else{
+                            login = data;
+                            $('#msgBienvenue').html("Bienvenue " + login);
                             $(".divConnexion").hide();
                             $(".divPartie").show();
                         }
@@ -62,13 +65,13 @@
                                     carteJoueur2.push([value[0], value[1], value[2]]);
                                     $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[index-nbCarteParJoueur][2] + '"></p></div>');
                                 }
-                                if(index >= (nbCarteParJoueur*2)-1 && index < nbCarteParJoueur*3-1){
+                                if(index >= (nbCarteParJoueur*2) && index < nbCarteParJoueur*3){
                                     carteJoueur3.push([value[0], value[1], value[2]]);
-                                    $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)+1][2] + '"></p></div>');
+                                    $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)][2] + '"></p></div>');
                                 }
-                                if(index >= (nbCarteParJoueur*3)-1 && index < nbCarteParJoueur*4-1){
+                                if(index >= (nbCarteParJoueur*3) && index < nbCarteParJoueur*4){
                                     carteJoueur4.push([value[0], value[1], value[2]]);
-                                    $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)+1][2] + '"></p></div>');
+                                    $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
                                 }
 
                             });
@@ -192,7 +195,7 @@
             <!--Affichage des parties-->
             <div class="divPartie">
                 <input class="bouton" type='button' id="submitDeconnexion" value='Deconnexion'>
-                <span>Bienvenue </span>
+                <span id="msgBienvenue"></span>
                 <section>
                     <h1>Rejoindre une partie</h1>
                     <div class="tbl-header">
