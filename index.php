@@ -39,6 +39,7 @@
                 var divPlateau = $(".divPlateau");
                 var divPartie = $(".divPartie");
 
+
                 divPartie.hide();
                 divPlateau.show();
             }
@@ -135,22 +136,18 @@
 							});
                             //Click sur le bouton rejoindre partie
                             var boutonRejoindrePartie = $(".boutonRejoindrePartie").on("click", function(){
-
-
                                 //Requete AJAX qui permet de rejoindre une partie
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
-                                    data: "id=" + $(this).parents("tr").children("td:first").text(),
+                                    data: "idPartie=" + $(this).parents("tr").children("td:first").text(),
                                     success: function(data){
-                                        //estConnecte();
                                         if(data == 'Success'){
-                                            //alert("coucou");
+                                            alert("oui");
                                         }else{
-                                            //alert(data);
+                                            alert(data);
                                         }
                                     }
                                 });
-
                                 rejoindrePartie();
                                 distributionCarte(4);
                             });

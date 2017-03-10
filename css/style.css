@@ -1,9 +1,12 @@
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body{
     height: 100%;
     width: 100%;
+    margin: 0;
     background-image: url('fond.jpg');
     background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
 }
 h1{
     text-align:center;
@@ -112,10 +115,7 @@ td{
 
 /* demo styles */
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-body{
-  font-family: 'Roboto', sans-serif;
-}
+
 section{
   margin: 50px;
 }

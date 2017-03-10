@@ -14,7 +14,7 @@ class ConnexionManager{
 		$req->bindValue(':password', $password, PDO::PARAM_STR);
 		$req->execute();
 		$resu = $req->fetch(PDO::FETCH_OBJ);
-		
+
 		return (isset($resu->joueur_id));
 	}
 
@@ -30,11 +30,20 @@ class ConnexionManager{
 		$sql = "SELECT joueur_id FROM joueur WHERE joueur_pseudo = :login";
 		$req = $this->db->prepare($sql);
 		$req->bindValue(':login', $login, PDO::PARAM_STR);
-		$req->bindValue(':password', $password, PDO::PARAM_STR);
 		$req->execute();
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 
 		return (isset($resu->joueur_id));
+	}
+
+	public function getIdJoueurLogin($login){
+		$sql = "SELECT joueur_id FROM joueur WHERE joueur_pseudo = :login";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':login', $login, PDO::PARAM_STR);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+
+		return $resu->joueur_id;
 	}
 }
 ?>

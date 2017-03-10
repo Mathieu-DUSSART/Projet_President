@@ -25,5 +25,15 @@ class PartieManager{
 		$res=$req->fetch(PDO::FETCH_OBJ);
 		return $res->nbJoueur;
 	}
+
+	public function addJoueurPartie($idJoueur, $idPartie){
+		$sql="INSERT INTO joueurpartie VALUES (:idJoueur, :idPartie)";
+		$req=$this->db->prepare($sql);
+        $req->bindValue(':idJoueur', $idJoueur, PDO::PARAM_INT);
+		$req->bindValue(':idPartie', $idPartie, PDO::PARAM_INT);
+        $req->execute();
+
+		return true;
+	}
 }
 ?>
