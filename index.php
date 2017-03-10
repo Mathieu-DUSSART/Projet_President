@@ -51,38 +51,36 @@
                 var carteJoueur4 = [];
                 var nbCarteParJoueur = 52 / nbJoueur;
 
-                //for (var i = 1; i <= nbJoueur; i++) {
-                    $.post({
-                        url: 'recupCarte.php',
-                        data: { nbJoueur: nbJoueur, idPartie: idPartie },
-                        dataType: 'json',
-                        success: function(data){
-                            alert("oui");
-                            $.each(data, function(index, value){
-                                if(index < nbCarteParJoueur){
-                                    carteJoueur1.push([value[0][0], value[0][1], value[0][2]]);
-                                    $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[index][2] + '"></p></div>');
-                                }
-                                if(index >= nbCarteParJoueur && index < nbCarteParJoueur*2){
-                                    carteJoueur2.push([value[0][0], value[0][1], value[0][2]]);
-                                    $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[index-nbCarteParJoueur][2] + '"></p></div>');
-                                }
-                                if(index >= (nbCarteParJoueur*2) && index < nbCarteParJoueur*3){
-                                    carteJoueur3.push([value[0][0], value[0][1], value[0][2]]);
-                                    $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)][2] + '"></p></div>');
-                                }
-                                if(index >= (nbCarteParJoueur*3) && index < nbCarteParJoueur*4){
-                                    carteJoueur4.push([value[0][0], value[0][1], value[0][2]]);
-                                    $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
-                                }
+                $.post({
+                    url: 'recupCarte.php',
+                    data: { nbJoueur: nbJoueur, idPartie: idPartie },
+                    dataType: 'json',
+                    success: function(data){
+                        alert("oui");
+                        $.each(data, function(index, value){
+                            if(index < nbCarteParJoueur){
+                                carteJoueur1.push([value[0][0], value[0][1], value[0][2]]);
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[index][2] + '"></p></div>');
+                            }
+                            if(index >= nbCarteParJoueur && index < nbCarteParJoueur*2){
+                                carteJoueur2.push([value[0][0], value[0][1], value[0][2]]);
+                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[index-nbCarteParJoueur][2] + '"></p></div>');
+                            }
+                            if(index >= (nbCarteParJoueur*2) && index < nbCarteParJoueur*3){
+                                carteJoueur3.push([value[0][0], value[0][1], value[0][2]]);
+                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)][2] + '"></p></div>');
+                            }
+                            if(index >= (nbCarteParJoueur*3) && index < nbCarteParJoueur*4){
+                                carteJoueur4.push([value[0][0], value[0][1], value[0][2]]);
+                                $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
+                            }
 
-                            });
-                        },
-                        error : function(resultat, statut, erreur){
-                            alert("noon");
-                        }
-                    });
-                //}
+                        });
+                    },
+                    error : function(resultat, statut, erreur){
+                        alert("noon");
+                    }
+                });
             }
 
 
