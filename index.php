@@ -154,7 +154,12 @@
                         }
                 });
 
-
+                $('.tab').sortable({
+                    containerSelector: 'table',
+                    itemPath: '> tbody',
+                    itemSelector: 'tr',
+                    placeholder: '<tr class="placeholder"/>'
+                });
             });
 
             $(window).on("load resize ", function() {
@@ -216,18 +221,23 @@
 
             <!--Plateau de jeu-->
             <div class="divPlateau">
-                <div class="divMainJoueur1">
+                <table id='j1' class="tab">
+                    <div class="divMainJoueur1">
 
-                </div>
-                <div class="divMainJoueur2">
-
-                </div>
-                <div class="divMainJoueur3">
-
-                </div>
-                <div class="divMainJoueur4">
-
-                </div>
+                    </div>
+                </table>
+                <table id='j2' class="tab">
+                    <div class="divMainJoueur2">
+                    </div>
+                </table>
+                <table id='j3' class="tab">
+                    <div class="divMainJoueur3">
+                    </div>
+                </table>
+                <table id='j4' class="tab">
+                    <div class="divMainJoueur4">
+                    </div>
+                </table>
             </div>
         </div>
     </body>
