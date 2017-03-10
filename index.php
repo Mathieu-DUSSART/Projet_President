@@ -42,17 +42,42 @@
 
             function distributionCarte(nbJoueur){
                 var carteJoueur1 = [];
+                var carteJoueur2 = [];
+                var carteJoueur3 = [];
+                var carteJoueur4 = [];
+                var nbCarteParJoueur = 52 / nbJoueur;
 
-                $.ajax({
-                    url: 'recupCarte.php',
-                    dataType: 'json',
-                    success: function(data){
-                        alert("oui");
-                        $.each(data,function(index, value){
-                            $(".divPlateau").append('<div><p>'+value[0]+' '+value[1]+' '+value[2]+'</p></div>');
-                        });
-                    }
-                });
+                //for (var i = 1; i <= nbJoueur; i++) {
+                    $.post({
+                        url: 'recupCarte.php',
+                        data: { nbJoueur: nbJoueur },
+                        dataType: 'json',
+                        success: function(data){
+                            $.each(data, function(index, value){
+                                if(index < nbCarteParJoueur){
+                                    carteJoueur1.push([value[0], value[1], value[2]]);
+                                    $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[index][2] + '"></p></div>');
+                                }
+                                if(index >= nbCarteParJoueur && index < nbCarteParJoueur*2){
+                                    carteJoueur2.push([value[0], value[1], value[2]]);
+                                    $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[index-nbCarteParJoueur][2] + '"></p></div>');
+                                }
+                                if(index >= (nbCarteParJoueur*2)-1 && index < nbCarteParJoueur*3-1){
+                                    carteJoueur3.push([value[0], value[1], value[2]]);
+                                    $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)+1][2] + '"></p></div>');
+                                }
+                                if(index >= (nbCarteParJoueur*3)-1 && index < nbCarteParJoueur*4-1){
+                                    carteJoueur4.push([value[0], value[1], value[2]]);
+                                    $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)+1][2] + '"></p></div>');
+                                }
+
+                            });
+                        },
+                        error : function(resultat, statut, erreur){
+                            alert(resultat);
+                        }
+                    });
+                //}
             }
 
 
@@ -116,9 +141,9 @@
                                     success: function(data){
                                         //estConnecte();
                                         if(data == 'Success'){
-                                            alert("coucou");
+                                            //alert("coucou");
                                         }else{
-                                            alert(data);
+                                            //alert(data);
                                         }
                                     }
                                 });
@@ -191,7 +216,18 @@
 
             <!--Plateau de jeu-->
             <div class="divPlateau">
+                <div class="divMainJoueur1">
 
+                </div>
+                <div class="divMainJoueur2">
+
+                </div>
+                <div class="divMainJoueur3">
+
+                </div>
+                <div class="divMainJoueur4">
+
+                </div>
             </div>
         </div>
     </body>
