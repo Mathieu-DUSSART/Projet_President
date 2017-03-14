@@ -5,4 +5,4 @@ $pdo = new Mypdo();
 $managerPartie = new PartieManager($pdo);
 
 $nbJoueur= $managerPartie->getNbJoueurPartie($_GET['idPartie']);
-echo $nbJoueur+1;
+echo $nbJoueur;

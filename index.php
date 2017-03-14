@@ -50,6 +50,7 @@
                 var carteJoueur2 = [];
                 var carteJoueur3 = [];
                 var carteJoueur4 = [];
+                var carteJoueur = [];
                 var nbCarteParJoueur = 52 / nbJoueur;
 
                 $.post({
@@ -57,9 +58,9 @@
                     data: { nbJoueur: nbJoueur, idPartie: idPartie },
                     dataType: 'json',
                     success: function(data){
-                        alert("oui");
+                        alert("ouiii");
                         $.each(data, function(index, value){
-                            if(index < nbCarteParJoueur){
+                            /*if(index < nbCarteParJoueur){
                                 carteJoueur1.push([value[0][0], value[0][1], value[0][2]]);
                                 $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[index][2] + '"></p></div>');
                             }
@@ -74,12 +75,21 @@
                             if(index >= (nbCarteParJoueur*3) && index < nbCarteParJoueur*4){
                                 carteJoueur4.push([value[0][0], value[0][1], value[0][2]]);
                                 $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
+                            }*/
+                            if(index == numJoueurPartie-1){
+                                alert(numJoueurPartie-1)
+                                carteJoueur.push(value[0]);
+
                             }
 
                         });
+                        for(carte in carteJoueur){
+                            alert(carte[2])
+                            $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carte + '"></p></div>');
+                        };
                     },
                     error : function(resultat, statut, erreur){
-                        alert("noon");
+                        alert(resultat);
                     }
                 });
             }
@@ -138,17 +148,7 @@
                             var boutonRejoindrePartie = $(".boutonRejoindrePartie").on("click", function(){
                                 idPartie = $(this).parents("tr").children("td:first").text();
 
-                                $.ajax({
-                                    url:'attributionNumJoueur.php',
-                                    data: "idPartie=" + idPartie,
-                                    success:function(data){
-                                        numJoueurPartie=data;
-                                        alert(numJoueurPartie);
-                                    },
-                                    error:function(data,t,u){
-                                        alert(data);
-                                    }
-                                });
+
                                 //Requete AJAX qui permet de rejoindre une partie
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
@@ -156,11 +156,21 @@
                                     success: function(data){
                                         if(data == 'Success'){
                                             alert("oui");
+                                            //Requete AJAX qui permet de récupérer le numéro du joueur dans la partie
+                                            $.ajax({
+                                                url:'attributionNumJoueur.php',
+                                                data: "idPartie=" + idPartie,
+                                                success:function(data){
+                                                    numJoueurPartie=data;
+                                                    alert(numJoueurPartie);
+                                                }
+                                            });
                                         }else{
                                             //alert(data);
                                         }
                                     }
                                 });
+
                                 rejoindrePartie();
                                 distributionCarte(4, idPartie);
                             });
