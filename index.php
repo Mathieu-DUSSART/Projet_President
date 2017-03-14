@@ -16,6 +16,7 @@
 
         <script>
             var login = "";
+            var numJoueurPartie = "";
             //Fonction qui vérifie si l'utilisateur est connecté ou non
             function estConnecte(){
                 $.ajax({
@@ -136,6 +137,18 @@
                             //Click sur le bouton rejoindre partie
                             var boutonRejoindrePartie = $(".boutonRejoindrePartie").on("click", function(){
                                 idPartie = $(this).parents("tr").children("td:first").text();
+
+                                $.ajax({
+                                    url:'attributionNumJoueur.php',
+                                    data: "idPartie=" + idPartie,
+                                    success:function(data){
+                                        numJoueurPartie=data;
+                                        alert(numJoueurPartie);
+                                    },
+                                    error:function(data,t,u){
+                                        alert(data);
+                                    }
+                                });
                                 //Requete AJAX qui permet de rejoindre une partie
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
