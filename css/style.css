@@ -165,9 +165,10 @@ h1{
 
 
 .divPlateau{
+    position: relative;
     display: none;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     margin: auto;
     border: 1px solid black;
     background-color: #0aad15;
@@ -184,4 +185,31 @@ h1{
 .carteMainJoueur img{
     width: 100%;
 
+}
+
+.divMainJoueur{
+    position: absolute;
+    bottom: 10px;
+    left: 10%;
+}
+.divMainAutreJoueur1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(90deg);
+    transform-origin: 0 100%;
+}
+.divMainAutreJoueur2{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-left: -100%;
+    transform: rotate(-90deg);
+    transform-origin: 100% 100%;
+}
+.divMainAutreJoueur3{
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    transform: rotate(180deg);
 }

@@ -59,6 +59,11 @@
                     dataType: 'json',
                     success: function(data){
                         alert("ouiii");
+                        //console.log(data[1][0]);
+                        carteJoueur1 = data[0][0];
+                        carteJoueur2 = data[1][0];
+                        carteJoueur3 = data[2][0];
+                        carteJoueur4 = data[3][0];
                         $.each(data, function(index, value){
                             /*if(index < nbCarteParJoueur){
                                 carteJoueur1.push([value[0][0], value[0][1], value[0][2]]);
@@ -76,20 +81,38 @@
                                 carteJoueur4.push([value[0][0], value[0][1], value[0][2]]);
                                 $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
                             }*/
-                            if(index == numJoueurPartie-1){
+                            /*if(index == numJoueurPartie-1){
                                 alert(numJoueurPartie-1)
                                 carteJoueur.push(value[0]);
 
-                            }
+                            }*/
 
                         });
-                        for(carte in carteJoueur){
-                            alert(carte[2])
-                            $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carte + '"></p></div>');
-                        };
+                        console.log(numJoueurPartie);
+                        for(i = 0 ; i<13 ; i++){
+                            //console.log(carteJoueur1[i]);
+                            if(numJoueurPartie == 1){
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
+                                $(".divMainJoueur1").addClass("divMainJoueur");
+                            }else if(numJoueurPartie == 2){
+                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
+                            }else if(numJoueurPartie == 3){
+                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
+                            }else if (numJoueurPartie == 4) {
+                                $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[i][2] + '"></p></div>');
+                                $(".divMainJoueur4").addClass("divMainJoueur");
+
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
+                                $(".divMainJoueur1").addClass("divMainAutreJoueur1");
+                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
+                                $(".divMainJoueur2").addClass("divMainAutreJoueur2");
+                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
+                                $(".divMainJoueur3").addClass("divMainAutreJoueur3");
+                            }
+                        }
                     },
                     error : function(resultat, statut, erreur){
-                        alert(resultat);
+                        console.log("echec " + resultat);
                     }
                 });
             }
