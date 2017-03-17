@@ -64,7 +64,12 @@ class PartieManager{
 		$req->bindValue(':joueur_id', $id_joueur, PDO::PARAM_INT);
 		$req->execute();
 		$resu = $req->fetch(PDO::FETCH_OBJ);
-		return $resu->partie_id;
+		if(isset($resu->partie_id)){
+			return $resu->partie_id;
+		}
+		else{
+			return null;
+		}
 	}
 }
 ?>
