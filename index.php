@@ -16,9 +16,14 @@
 
         <script>
             var login = "";
+            var idJoueur = "";
             var numJoueurPartie = "";
             var numPartie;
-			existeJoueurPartie();
+            $(function(){
+                getIdJoueur();
+                existeJoueurPartie();
+
+            })
 
             function afficherConnexion(){
                 $(".divConnexion").show(300);
@@ -37,6 +42,16 @@
                 $(".divConnexion").hide(300);
                 $(".divPartie").hide(300);
                 $(".divPlateau").show(300);
+            }
+
+            function getIdJoueur(){
+                $.ajaxSetup({async: false});
+                $.ajax({
+                    url: 'getIdJoueur.php',
+                    success: function(data){
+                        idJoueur = data;
+                    }
+                })
             }
 
             //Fonction qui vérifie si l'utilisateur est connecté ou non
@@ -59,6 +74,7 @@
 				$.ajaxSetup({async: false});
 				$.ajax({
                     url: 'existeJoueurPartie.php',
+                    data: {idJoueur: idJoueur},
                     success: function(data){
 						console.log(data);
 						numPartie=data;
@@ -125,7 +141,12 @@
                 });
             }
 
-
+            function afficherMain(tabCarte){
+                for(var i in tabCarte){
+                    console.log(" coucou " + tabCarte[i][2]);
+                    $('.divMainJoueur1').append("<div class='carteMainJoueur'><img alt='' src='" + tabCarte[i][2] + "'></div>");
+                }
+            }
 
             $(function(){
                 $.ajaxSetup({async: false});
@@ -226,7 +247,15 @@
             $(function(){
                 if(numPartie != ""){
                     afficherPlateau();
-                    
+                    $.ajaxSetup({async: false});
+                    $.ajax({
+                        url: 'recupMainJoueur.php',
+                        data: {idJoueur: idJoueur},
+                        dataType: 'json',
+                        success: function(data){
+                            afficherMain(data);
+                        }
+                    })
                 }
             });
 

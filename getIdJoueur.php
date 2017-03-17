@@ -5,11 +5,7 @@ require_once("include/autoLoad.inc.php");
 $pdo = new Mypdo();
 $managerPartie = new PartieManager($pdo);
 
+$idJoueur = $managerPartie -> getIdJoueur($_SESSION["login"]);
 
-$numPartie = $managerPartie -> existeJoueurPartie($_GET["idJoueur"]);
-
-
-
-echo $numPartie[0];
-
-?>
+echo $idJoueur;
+ ?>
