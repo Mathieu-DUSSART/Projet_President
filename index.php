@@ -17,24 +17,39 @@
         <script>
             var login = "";
             var numJoueurPartie = "";
+            var numPartie;
 			existeJoueurPartie();
-			var numPartie;
-			
+
+            function afficherConnexion(){
+                $(".divConnexion").show(300);
+                $(".divPartie").hide(300);
+                $(".divPlateau").hide(300);
+            }
+
+            function afficherListePartie(){
+                $('#msgBienvenue').html("Bienvenue " + login);
+                $(".divConnexion").hide(300);
+                $(".divPartie").show(300);
+                $(".divPlateau").hide(300);
+            }
+
+            function afficherPlateau(){
+                $(".divConnexion").hide(300);
+                $(".divPartie").hide(300);
+                $(".divPlateau").show(300);
+            }
+
             //Fonction qui vérifie si l'utilisateur est connecté ou non
             function estConnecte(){
-				 $.ajaxSetup({async: false});
+				$.ajaxSetup({async: false});
                 $.ajax({
                     url: 'estConnecte.php',
                     success: function(data){
                         if(!data){
-                            $(".divConnexion").show(300);
-                            $(".divPartie").hide(300);
-                            $(".divPlateau").hide(300);
+                            afficherConnexion();
                         }else{
                             login = data;
-                            $('#msgBienvenue').html("Bienvenue " + login);
-                            $(".divConnexion").hide(300);
-                            $(".divPartie").show(300);
+                            afficherListePartie();
                         }
                     }
                 });
@@ -50,7 +65,7 @@
 					}
 				});
 			}
-			
+
             function rejoindrePartie(){
                 var divPlateau = $(".divPlateau");
                 var divPartie = $(".divPartie");
@@ -205,6 +220,14 @@
                     itemSelector: 'tr',
                     placeholder: '<tr class="placeholder"/>'
                 });
+            });
+
+
+            $(function(){
+                if(numPartie != ""){
+                    afficherPlateau();
+                    
+                }
             });
 
             $(window).on("load resize ", function() {
