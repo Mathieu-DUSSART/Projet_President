@@ -59,34 +59,13 @@
                     dataType: 'json',
                     success: function(data){
                         alert("ouiii");
+                        console.log(data);
                         //console.log(data[1][0]);
                         carteJoueur1 = data[0][0];
                         carteJoueur2 = data[1][0];
                         carteJoueur3 = data[2][0];
                         carteJoueur4 = data[3][0];
-                        $.each(data, function(index, value){
-                            /*if(index < nbCarteParJoueur){
-                                carteJoueur1.push([value[0][0], value[0][1], value[0][2]]);
-                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[index][2] + '"></p></div>');
-                            }
-                            if(index >= nbCarteParJoueur && index < nbCarteParJoueur*2){
-                                carteJoueur2.push([value[0][0], value[0][1], value[0][2]]);
-                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[index-nbCarteParJoueur][2] + '"></p></div>');
-                            }
-                            if(index >= (nbCarteParJoueur*2) && index < nbCarteParJoueur*3){
-                                carteJoueur3.push([value[0][0], value[0][1], value[0][2]]);
-                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[index-(nbCarteParJoueur*2)][2] + '"></p></div>');
-                            }
-                            if(index >= (nbCarteParJoueur*3) && index < nbCarteParJoueur*4){
-                                carteJoueur4.push([value[0][0], value[0][1], value[0][2]]);
-                                $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[index-(nbCarteParJoueur*3)][2] + '"></p></div>');
-                            }*/
-                            /*if(index == numJoueurPartie-1){
-                                alert(numJoueurPartie-1)
-                                carteJoueur.push(value[0]);
-                            }*/
 
-                        });
                         console.log(numJoueurPartie);
                         for(i = 0 ; i<13 ; i++){
                             //console.log(carteJoueur1[i]);
@@ -119,6 +98,7 @@
 
 
             $(function(){
+                $.ajaxSetup({async: false});
                 $.ajax({
                     url: 'include/include.inc.php'
                 });
@@ -128,6 +108,7 @@
                 //Click sur le bouton connexion
                 var boutonConnexion = $('#submitConnexion').on('click',function(){
                     //Requete AJAX qui vérifie que le login et password sont correct
+                    $.ajaxSetup({async: false});
                     $.post(
                         'validationConnexion.php',
                         {
@@ -150,6 +131,7 @@
 
                 //Click sur le bouton déconnexion
                 var boutonDeconnexion = $('#submitDeconnexion').on('click',function(){
+                    $.ajaxSetup({async: false});
                     $.ajax({
                         url: 'deconnexion.php',
                         success: function(data){
@@ -159,6 +141,7 @@
                 });
 
                 //Requête AJAX qui récupère la liste des parties en cours
+                $.ajaxSetup({async: false});
 				$.ajax({
                         url: 'listePartie.php',
 						dataType: 'json',
@@ -172,6 +155,7 @@
 
 
                                 //Requete AJAX qui permet de rejoindre une partie
+                                $.ajaxSetup({async: false});
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
                                     data: "idPartie=" + idPartie,
@@ -179,6 +163,7 @@
                                         if(data == 'Success'){
                                             alert("oui");
                                             //Requete AJAX qui permet de récupérer le numéro du joueur dans la partie
+                                            $.ajaxSetup({async: false});
                                             $.ajax({
                                                 url:'attributionNumJoueur.php',
                                                 data: "idPartie=" + idPartie,
