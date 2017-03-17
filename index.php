@@ -143,8 +143,8 @@
 
             function afficherMain(tabCarte){
                 for(var i in tabCarte){
-                    console.log(" coucou " + tabCarte[i][2]);
                     $('.divMainJoueur1').append("<div class='carteMainJoueur'><img alt='' src='" + tabCarte[i][2] + "'></div>");
+                    $('.divMainJoueur1').addClass("divMainJoueur");
                 }
             }
 
@@ -254,6 +254,19 @@
                         dataType: 'json',
                         success: function(data){
                             afficherMain(data);
+                            $.ajax({
+                                url: 'getNbCarteMainAutreJoueur.php',
+                                data: {idPartie: numPartie, idJoueur: idJoueur},
+                                dataType: 'json',
+                                success: function(data){
+                                    $(".divMainJoueur2").append("<p>Nombre de cartes: " + data[0].nbCarte + "</p>");
+                                    $(".divMainJoueur3").append("<p>Nombre de cartes: " + data[1].nbCarte + "</p>");
+                                    $(".divMainJoueur4").append("<p>Nombre de cartes: " + data[2].nbCarte + "</p>");
+                                    $(".divMainJoueur2").css({position: "absolute", left: "0", top: "45vh"});
+                                    $(".divMainJoueur3").css({position: "absolute", left: "40%", top: "10px"})
+                                    $(".divMainJoueur4").css({position: "absolute", right: "0", top: "45vh"})
+                                }
+                            })
                         }
                     })
                 }

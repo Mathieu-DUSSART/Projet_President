@@ -36,4 +36,19 @@ class MainManager{
 
 		return $tabCarte;
 	}
+
+	public function getNombreCarteMainAutreJoueur($idPartie, $idJoueur){
+		$tabNbCarte = Array();
+		$sql = "SELECT m.joueur_id, COUNT(carte_id) as nbCarte FROM main m JOIN joueurpartie jp ON jp.joueur_id = m.joueur_id WHERE jp.partie_id = :idPartie AND jp.joueur_id <> :idJoueur GROUP BY m.joueur_id";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':idPartie', $idPartie, PDO::PARAM_INT);
+		$req->bindValue(':idJoueur', $idJoueur, PDO::PARAM_INT);
+		$req->execute();
+
+		while($ligne = $req->fetch(PDO::FETCH_OBJ)){
+			$tabNbCarte[] = $ligne;
+		}
+
+		return $tabNbCarte;
+	}
 }
