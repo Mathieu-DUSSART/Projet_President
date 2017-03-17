@@ -183,7 +183,7 @@
                                                 url:'attributionNumJoueur.php',
                                                 data: "idPartie=" + idPartie,
                                                 success:function(data){
-                                                    numJoueurPartie=data;
+                                                    numJoueurPartie = data;
                                                     alert(numJoueurPartie);
                                                 }
                                             });

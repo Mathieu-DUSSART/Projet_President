@@ -41,7 +41,7 @@ for($i = 0 ; $i < 52 ; $i++){
     }
 
     $managerMain->addCarte($carte->getIdCarte(), $idJoueur);
-    
+
     array_splice($tabcarte, $rand, 1);
 }
 $jsonData[0] = [$tabJoueur1];
