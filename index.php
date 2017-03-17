@@ -23,14 +23,14 @@
                     url: 'estConnecte.php',
                     success: function(data){
                         if(!data){
-                            $(".divConnexion").show();
-                            $(".divPartie").hide();
-                            $(".divPlateau").hide();
+                            $(".divConnexion").show(300);
+                            $(".divPartie").hide(300);
+                            $(".divPlateau").hide(300);
                         }else{
                             login = data;
                             $('#msgBienvenue').html("Bienvenue " + login);
-                            $(".divConnexion").hide();
-                            $(".divPartie").show();
+                            $(".divConnexion").hide(300);
+                            $(".divPartie").show(300);
                         }
                     }
                 });
@@ -41,8 +41,8 @@
                 var divPartie = $(".divPartie");
 
 
-                divPartie.hide();
-                divPlateau.show();
+                divPartie.hide(300);
+                divPlateau.show(300);
             }
 
             function distributionCarte(nbJoueur, idPartie){
@@ -84,7 +84,6 @@
                             /*if(index == numJoueurPartie-1){
                                 alert(numJoueurPartie-1)
                                 carteJoueur.push(value[0]);
-
                             }*/
 
                         });
