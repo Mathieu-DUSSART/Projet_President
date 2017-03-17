@@ -48,5 +48,23 @@ class PartieManager{
 
 		return $tabJoueur;
 	}
+	
+	public function getIdJoueur($login){
+		$sql = "SELECT joueur_id FROM joueur WHERE joueur_pseudo = :login";
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':login', $login, PDO::PARAM_STR);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		return $resu->joueur_id;
+	}
+	
+	public function existeJoueurPartie($id_joueur){
+		$sql="SELECT partie_id FROM joueurpartie where joueur_id =:joueur_id ";
+		$req=$this->db->prepare($sql);
+		$req->bindValue(':joueur_id', $id_joueur, PDO::PARAM_INT);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		return $resu->partie_id;
+	}
 }
 ?>

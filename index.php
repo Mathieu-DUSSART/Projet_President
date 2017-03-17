@@ -17,8 +17,12 @@
         <script>
             var login = "";
             var numJoueurPartie = "";
+			existeJoueurPartie();
+			var numPartie;
+			
             //Fonction qui vérifie si l'utilisateur est connecté ou non
             function estConnecte(){
+				 $.ajaxSetup({async: false});
                 $.ajax({
                     url: 'estConnecte.php',
                     success: function(data){
@@ -36,6 +40,17 @@
                 });
             }
 
+			function existeJoueurPartie(){
+				$.ajaxSetup({async: false});
+				$.ajax({
+                    url: 'existeJoueurPartie.php',
+                    success: function(data){
+						console.log(data);
+						numPartie=data;
+					}
+				});
+			}
+			
             function rejoindrePartie(){
                 var divPlateau = $(".divPlateau");
                 var divPartie = $(".divPartie");
@@ -52,7 +67,7 @@
                 var carteJoueur4 = [];
                 var carteJoueur = [];
                 var nbCarteParJoueur = 52 / nbJoueur;
-
+				$.ajaxSetup({async: false});
                 $.post({
                     url: 'recupCarte.php',
                     data: { nbJoueur: nbJoueur, idPartie: idPartie },
