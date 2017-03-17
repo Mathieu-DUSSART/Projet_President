@@ -100,7 +100,7 @@
                             }else if (numJoueurPartie == 4) {
                                 $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[i][2] + '"></p></div>');
                                 $(".divMainJoueur4").addClass("divMainJoueur");
-
+                                //sdqsd
                                 $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
                                 $(".divMainJoueur1").addClass("divMainAutreJoueur1");
                                 $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
