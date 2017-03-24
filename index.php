@@ -20,12 +20,13 @@
             var numJoueurPartie = "";
             var numPartie;
 						
+					 
 			$(function () {
 				$("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
 				$("#sortable").disableSelection();
-			   
-			});
-			
+	       
+			});		 
+						
             $(function(){
                 getIdJoueur();
                 existeJoueurPartie();
@@ -123,7 +124,7 @@
                         for(i = 0 ; i<13 ; i++){
                             //console.log(carteJoueur1[i]);
                             if(numJoueurPartie == 1){
-                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur ui-widget-content"><img  alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
                                 $(".divMainJoueur1").addClass("divMainJoueur");
                             }else if(numJoueurPartie == 2){
                                 $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
@@ -150,10 +151,19 @@
 
             function afficherMain(tabCarte){
                 for(var i in tabCarte){
-                    $('.divMainJoueur1').append("<div class='carteMainJoueur'><img alt='' src='" + tabCarte[i][2] + "'></div>");
+                    $('.divMainJoueur1').append("<div class='carteMainJoueur draggable'><img alt='' src='" + tabCarte[i][2] + "'></div>");
                     $('.divMainJoueur1').addClass("divMainJoueur");
                 }
-            }
+				$( ".draggable" ).draggable({connectToSortable: "#sortable",revert: "invalid" });
+				$( "#droppable" ).droppable({
+				  drop: function( event, ui ) {
+					$( this )
+					  .addClass( "ui-state-highlight" )
+					  .find( "p" )
+						.html( "Dropped!" );
+				  }
+				});
+			  } 
 
             $(function(){
                 $.ajaxSetup({async: false});
@@ -340,9 +350,9 @@
             <div class="divPlateau" >
                 
             <!--Tas de cartes-->
-            <div class="tasDeCartes">
-
-            </div>
+				<div class="tasDeCartes ui-widget-header" id="droppable">
+					<p> </p>
+				</div>
                 <table id='j1' class="tab">
                     <div class="divMainJoueur1" id="sortable">
 
