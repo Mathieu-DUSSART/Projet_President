@@ -10,6 +10,6 @@ $tab["carte_valeur"] = 10;
 $tab["carte_img"] = "test";
 $Carte = new Carte($tab);
 
-echo $managerCarte->poserCarte($Carte);
+echo $managerCarte->poserCarte($_GET["valeur"]);
 
 ?>

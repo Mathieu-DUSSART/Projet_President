@@ -18,10 +18,10 @@ class CarteManager{
 		return $tabcarte;
 	}
 
-	public function poserCarte($carte){
+	public function poserCarte($valeur){
 		$sql="SELECT cp.carte_id as carte, cp.id FROM cartepose cp JOIN carte c ON c.carte_id = cp.carte_id WHERE c.carte_valeur <= :carteValeur AND cp.id = (SELECT MAX(cp2.id) as maxId FROM cartepose cp2)";
 		$req=$this->db->prepare($sql);
-		$req->bindValue(':carteValeur', $carte->getValeurCarte(), PDO::PARAM_INT);
+		$req->bindValue(':carteValeur', $valeur, PDO::PARAM_INT);
         $req->execute();
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 

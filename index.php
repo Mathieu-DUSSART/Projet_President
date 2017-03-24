@@ -22,8 +22,8 @@
 
 
 			$(function () {
-			/*	$("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
-				$("#sortable").disableSelection();*/
+	            $("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
+				$("#sortable").disableSelection();
 
 			});
 
@@ -161,7 +161,13 @@
 					  .addClass( "ui-state-highlight" )
 					  .find( "p" )
 						.html( "Dropped!" );*/
-                    $(this).find("div").hide();
+                    var objet_drop = $(ui.draggable); // L'élément drop
+                    objet_drop.appendTo($(this));
+                    objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
+                    /*$.ajax({
+                        url: 'poserCarte.php',
+                        data: {valeur: idJoueur},
+                    })*/
 				  }
 				});
 			  }
