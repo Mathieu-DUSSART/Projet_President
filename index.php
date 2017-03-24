@@ -19,14 +19,14 @@
             var idJoueur = "";
             var numJoueurPartie = "";
             var numPartie;
-						
-					 
+
+
 			$(function () {
-				$("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
-				$("#sortable").disableSelection();
-	       
-			});		 
-						
+			/*	$("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
+				$("#sortable").disableSelection();*/
+
+			});
+
             $(function(){
                 getIdJoueur();
                 existeJoueurPartie();
@@ -157,13 +157,14 @@
 				$( ".draggable" ).draggable({connectToSortable: "#sortable",revert: "invalid" });
 				$( "#droppable" ).droppable({
 				  drop: function( event, ui ) {
-					$( this )
+					/*$( this )
 					  .addClass( "ui-state-highlight" )
 					  .find( "p" )
-						.html( "Dropped!" );
+						.html( "Dropped!" );*/
+                    $(this).find("div").hide();
 				  }
 				});
-			  } 
+			  }
 
             $(function(){
                 $.ajaxSetup({async: false});
@@ -348,7 +349,7 @@
 
             <!--Plateau de jeu-->
             <div class="divPlateau" >
-                
+
             <!--Tas de cartes-->
 				<div class="tasDeCartes ui-widget-header" id="droppable">
 					<p> </p>
