@@ -58,6 +58,7 @@
                     url: 'getIdJoueur.php',
                     success: function(data){
                         idJoueur = data;
+                        console.log("test " + data);
                     }
                 })
             }
@@ -105,6 +106,7 @@
                 var carteJoueur3 = [];
                 var carteJoueur4 = [];
                 var carteJoueur = [];
+                alert("mamanee")
                 var nbCarteParJoueur = 52 / nbJoueur;
 				$.ajaxSetup({async: false});
                 $.post({
@@ -120,7 +122,7 @@
                         carteJoueur3 = data[2][0];
                         carteJoueur4 = data[3][0];
 
-                        console.log(numJoueurPartie);
+                        console.log("num" + numJoueurPartie);
                         for(i = 0 ; i<13 ; i++){
                             //console.log(carteJoueur1[i]);
                             if(numJoueurPartie == 1){
@@ -166,7 +168,14 @@
                     objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
                     /*$.ajax({
                         url: 'poserCarte.php',
-                        data: {valeur: idJoueur},
+                        data: {valeur: 12},
+                        success: function(data){
+                            objet_drop.appendTo($(this));
+                            objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
+                        },
+                        error: function(data, t, r){
+
+                        }
                     })*/
 				  }
 				});
