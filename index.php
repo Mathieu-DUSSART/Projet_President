@@ -19,6 +19,13 @@
             var idJoueur = "";
             var numJoueurPartie = "";
             var numPartie;
+						
+			$(function () {
+				$("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
+				$("#sortable").disableSelection();
+			   
+			});
+			
             $(function(){
                 getIdJoueur();
                 existeJoueurPartie();
@@ -330,9 +337,9 @@
             </div>
 
             <!--Plateau de jeu-->
-            <div class="divPlateau">
+            <div class="divPlateau" >
                 <table id='j1' class="tab">
-                    <div class="divMainJoueur1">
+                    <div class="divMainJoueur1" id="sortable">
 
                     </div>
                 </table>
