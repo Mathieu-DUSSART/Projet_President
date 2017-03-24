@@ -16,8 +16,13 @@ $tabJoueur4 = [];
 $nbJoueur = 4;
 $idPartie = 1;
 $tabJoueur = Array();
-$tabJoueur = $managerPartie->getJoueurPartie($idPartie);
 
+
+while($managerPartie->getNbJoueurPartie($idPartie)!=4){
+
+}
+
+$tabJoueur = $managerPartie->getJoueurPartie($idPartie);
 $nbCarteParJoueur = 52 / $nbJoueur;
 
 for($i = 0 ; $i < 52 ; $i++){

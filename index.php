@@ -22,7 +22,7 @@
 
 
 			$(function () {
-	            $("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false, revert: true});
+	            $("#sortable").sortable({cursor:'pointer',tolerance:'pointer', scroll: false});
 				$("#sortable").disableSelection();
 
 			});
@@ -53,9 +53,9 @@
             }
 
             function getIdJoueur(){
-                $.ajaxSetup({async: false});
                 $.ajax({
                     url: 'getIdJoueur.php',
+                    async: false,
                     success: function(data){
                         idJoueur = data;
                         console.log("test " + data);
@@ -65,9 +65,9 @@
 
             //Fonction qui vérifie si l'utilisateur est connecté ou non
             function estConnecte(){
-				$.ajaxSetup({async: false});
                 $.ajax({
                     url: 'estConnecte.php',
+                    async: false,
                     success: function(data){
                         if(!data){
                             afficherConnexion();
@@ -80,9 +80,9 @@
             }
 
 			function existeJoueurPartie(){
-				$.ajaxSetup({async: false});
 				$.ajax({
                     url: 'existeJoueurPartie.php',
+                    async: false,
                     data: {idJoueur: idJoueur},
                     success: function(data){
 						console.log(data);
@@ -106,15 +106,14 @@
                 var carteJoueur3 = [];
                 var carteJoueur4 = [];
                 var carteJoueur = [];
-                alert("mamanee")
                 var nbCarteParJoueur = 52 / nbJoueur;
-				$.ajaxSetup({async: false});
+
                 $.post({
                     url: 'recupCarte.php',
+                    async: false,
                     data: { nbJoueur: nbJoueur, idPartie: idPartie },
                     dataType: 'json',
                     success: function(data){
-                        alert("ouiii");
                         console.log(data);
                         //console.log(data[1][0]);
                         carteJoueur1 = data[0][0];
@@ -123,27 +122,27 @@
                         carteJoueur4 = data[3][0];
 
                         console.log("num" + numJoueurPartie);
-                        for(i = 0 ; i<13 ; i++){
+                        /*for(i = 0 ; i<13 ; i++){
                             //console.log(carteJoueur1[i]);
                             if(numJoueurPartie == 1){
-                                $(".divMainJoueur1").append('<div class="carteMainJoueur ui-widget-content"><img  alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur ui-widget-content"><img  class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
                                 $(".divMainJoueur1").addClass("divMainJoueur");
                             }else if(numJoueurPartie == 2){
-                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
+                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
                             }else if(numJoueurPartie == 3){
-                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
+                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
                             }else if (numJoueurPartie == 4) {
-                                $(".divMainJoueur4").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur4[i][2] + '"></p></div>');
+                                $(".divMainJoueur4").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur4[i][2] + '"></p></div>');
                                 $(".divMainJoueur4").addClass("divMainJoueur");
                                 //sdqsd
-                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
+                                $(".divMainJoueur1").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '"alt="" src="' + carteJoueur1[i][2] + '"></p></div>');
                                 $(".divMainJoueur1").addClass("divMainAutreJoueur1");
-                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
+                                $(".divMainJoueur2").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur2[i][2] + '"></p></div>');
                                 $(".divMainJoueur2").addClass("divMainAutreJoueur2");
-                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
+                                $(".divMainJoueur3").append('<div class="carteMainJoueur"><img class="' + carteJoueur1[i][1] + '" alt="" src="' + carteJoueur3[i][2] + '"></p></div>');
                                 $(".divMainJoueur3").addClass("divMainAutreJoueur3");
                             }
-                        }
+                        }*/
                     },
                     error : function(resultat, statut, erreur){
                         console.log("echec " + resultat);
@@ -153,36 +152,32 @@
 
             function afficherMain(tabCarte){
                 for(var i in tabCarte){
-                    $('.divMainJoueur1').append("<div class='carteMainJoueur draggable'><img alt='' src='" + tabCarte[i][2] + "'></div>");
+                    $('.divMainJoueur1').append("<div class='carteMainJoueur draggable'><img class='" + tabCarte[i][1] + "' alt='' src='" + tabCarte[i][2] + "'></div>");
                     $('.divMainJoueur1').addClass("divMainJoueur");
                 }
-				$( ".draggable" ).draggable({connectToSortable: "#sortable",revert: "invalid" });
+				$( ".draggable" ).draggable({connectToSortable: "#sortable", revert: true });
 				$( "#droppable" ).droppable({
 				  drop: function( event, ui ) {
-					/*$( this )
-					  .addClass( "ui-state-highlight" )
-					  .find( "p" )
-						.html( "Dropped!" );*/
-                    var objet_drop = $(ui.draggable); // L'élément drop
-                    objet_drop.appendTo($(this));
-                    objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
-                    /*$.ajax({
-                        url: 'poserCarte.php',
-                        data: {valeur: 12},
-                        success: function(data){
-                            objet_drop.appendTo($(this));
-                            objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
-                        },
-                        error: function(data, t, r){
-
-                        }
-                    })*/
+                        var objet_drop = $(ui.draggable); // L'élément drop
+                        valeurCarte = objet_drop.children("img").attr("class")
+                        $.ajax({
+                            url: 'poserCarte.php',
+                            async: false,
+                            data: {valeur: valeurCarte},
+                            success: function(data){
+                                if(data == "1"){
+                                    objet_drop.appendTo($('#droppable'));
+                                    objet_drop.css({position: "absolute", left: "50%", top: "50%", marginLeft: "-2.5vw", marginTop: "-3.5vw"});
+                                    objet_drop.draggable('disable')
+                                    ui.draggable.draggable('option', 'revert', false)
+                                }
+                            }
+                        })
 				  }
 				});
 			  }
 
             $(function(){
-                $.ajaxSetup({async: false});
                 $.ajax({
                     url: 'include/include.inc.php'
                 });
@@ -192,9 +187,9 @@
                 //Click sur le bouton connexion
                 var boutonConnexion = $('#submitConnexion').on('click',function(){
                     //Requete AJAX qui vérifie que le login et password sont correct
-                    $.ajaxSetup({async: false});
                     $.post(
                         'validationConnexion.php',
+                        false,
                         {
                             login: $('[name="login"]').val(),
                             password: $('[name="password"]').val()
@@ -215,9 +210,9 @@
 
                 //Click sur le bouton déconnexion
                 var boutonDeconnexion = $('#submitDeconnexion').on('click',function(){
-                    $.ajaxSetup({async: false});
                     $.ajax({
                         url: 'deconnexion.php',
+                        async: false,
                         success: function(data){
                             estConnecte();
                         }
@@ -225,9 +220,9 @@
                 });
 
                 //Requête AJAX qui récupère la liste des parties en cours
-                $.ajaxSetup({async: false});
 				$.ajax({
                         url: 'listePartie.php',
+                        async: false,
 						dataType: 'json',
                         success: function(data){
 							$.each(data,function(index, value){
@@ -239,21 +234,20 @@
 
 
                                 //Requete AJAX qui permet de rejoindre une partie
-                                $.ajaxSetup({async: false});
                                 $.ajax({
                                     url: 'rejoindrePartie.php',
+                                    async: false,
                                     data: "idPartie=" + idPartie,
                                     success: function(data){
                                         if(data == 'Success'){
-                                            alert("oui");
+
                                             //Requete AJAX qui permet de récupérer le numéro du joueur dans la partie
-                                            $.ajaxSetup({async: false});
                                             $.ajax({
                                                 url:'attributionNumJoueur.php',
+                                                async: false,
                                                 data: "idPartie=" + idPartie,
                                                 success:function(data){
                                                     numJoueurPartie = data;
-                                                    alert(numJoueurPartie);
                                                 }
                                             });
                                         }else{
@@ -280,9 +274,9 @@
             $(function(){
                 if(numPartie != ""){
                     afficherPlateau();
-                    $.ajaxSetup({async: false});
                     $.ajax({
                         url: 'recupMainJoueur.php',
+                        async: false,
                         data: {idJoueur: idJoueur},
                         dataType: 'json',
                         success: function(data){
