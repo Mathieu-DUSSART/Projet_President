@@ -338,6 +338,11 @@
 
             <!--Plateau de jeu-->
             <div class="divPlateau" >
+                
+            <!--Tas de cartes-->
+            <div class="tasDeCartes">
+
+            </div>
                 <table id='j1' class="tab">
                     <div class="divMainJoueur1" id="sortable">
 
