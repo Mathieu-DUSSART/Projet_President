@@ -4,7 +4,7 @@ require_once("include/autoLoad.inc.php");
 $pdo = new Mypdo();
 $managerMain = new MainManager($pdo);
 
-$tabCarte = $managerMain->getMainJoueur(1);
+$tabCarte = $managerMain->getMainJoueur($_GET["idJoueur"]);
 
 foreach ($tabCarte as $carte) {
     $jsonData[] = [$carte->getIdCarte(), $carte->getValeurCarte(), $carte->getImgCarte()];
